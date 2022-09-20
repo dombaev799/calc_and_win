@@ -35,7 +35,7 @@ def get_user_attack():
     for i in range(5):
         input_attack = input('Введи тип атаки: ').lower()
         attack_value = attacks_types[input_attack]()
-        print(f'Ваша атака {attack_value} поинтов.')
+        print(f'Количество очков твоей атаки: {attack_value}.')
         total += 1
     return total
 
@@ -43,19 +43,18 @@ def get_user_attack():
 def run_game():
     user_total_attack = get_user_attack()
     enemy_health = set_enemy_health()
-    print(f'Ваш суммарный урон равен {user_total_attack}.')
-    print(f'Количество очков здоровья противника равно {enemy_health}.')
+    print(f'Тобой нанесён урон противнику равный {user_total_attack}.')
+    print(f'Очки здоровья противника после твоей атаки: {enemy_health}.')
     if compare_valumes(enemy_health, user_total_attack):
-        print('Вы победили! Ваши очки урона '
-              'максмально близки к очкам здоровья противника.')
+        print('Ура! Победа за тобой!')
     else:
-        print('Вы проиграли! Ваши очки урона '
-              'сильно различаются с очками здоровья противника.')
+        print('В этот раз не повезло :( Бой проигран.')
     yes_no = {
         'Y': True,
         'N': False,
     }
-    replay = input('Чтобы сыграть ещё введите "y", иначе "n": ')
+    replay = input('Чтобы сыграть ещё раз, введи "y"; '
+                   'если не хочешь продолжать игру, введи "n": ')
     if replay not in yes_no:
-        raise ValueError('Вы используете неподходящий символ.')
+        raise ValueError('Такой команды в игре нет.')
     return yes_no[replay]
