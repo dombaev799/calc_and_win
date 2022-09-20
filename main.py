@@ -1,6 +1,3 @@
-from sre_constants import IN
-
-
 from module import run_game
 
 INTRO = '''РАССЧИТАЙ И ПОБЕДИ!
